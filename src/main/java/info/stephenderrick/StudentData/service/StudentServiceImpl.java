@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -34,6 +35,22 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public void deleteStudentByRegNo(Long regNo) {
         studentRepository.deleteById(regNo);
+    }
+
+    @Override
+    public Student updateStudentByRegNo(Long regNo, Student student) {
+       Student studentInDataBase = studentRepository.findById(regNo).get();
+
+       if(Objects.nonNull(student.getName()) && !"".equalsIgnoreCase(student.getName())){
+           studentInDataBase.setName(student.getName());
+       }
+
+       if(Objects.nonNull(student.getCourse()) && !"".equalsIgnoreCase(student.getCourse())){
+            studentInDataBase.setCourse(student.getCourse());
+       }
+
+       return studentRepository.save(studentInDataBase);
+
     }
 
 

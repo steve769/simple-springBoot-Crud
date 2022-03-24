@@ -32,4 +32,8 @@ public class StudentController {
         studentService.deleteStudentByRegNo(regNo);
         return "Student successfully deleted!";
     }
+    @PutMapping("/students/{regNo}")
+    public Student updateStudentByRegNo(@PathVariable("regNo") Long regNo, @RequestBody Student student){
+        return studentService.updateStudentByRegNo(regNo, student);
+    }
 }

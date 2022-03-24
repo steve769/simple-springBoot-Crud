@@ -18,4 +18,6 @@ public interface StudentService{
     Student fetchStudentByRegNo(Long regNo);
 
     void deleteStudentByRegNo(Long regNo);
+
+    Student updateStudentByRegNo(Long regNo, Student student);
 }
