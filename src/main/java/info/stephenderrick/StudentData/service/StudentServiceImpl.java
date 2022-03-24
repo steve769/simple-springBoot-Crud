@@ -31,5 +31,10 @@ public class StudentServiceImpl implements StudentService{
         return student.get();
     }
 
+    @Override
+    public void deleteStudentByRegNo(Long regNo) {
+        studentRepository.deleteById(regNo);
+    }
+
 
 }

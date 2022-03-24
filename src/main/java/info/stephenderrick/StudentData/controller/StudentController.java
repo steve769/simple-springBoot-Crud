@@ -27,4 +27,9 @@ public class StudentController {
     public Student fetchStudentByRegNo(@PathVariable("regNo") Long regNo){
         return studentService.fetchStudentByRegNo(regNo);
     }
+    @DeleteMapping("/students/{regNo}")
+    public String deleteStudentByRegNo (@PathVariable("regNo") Long regNo){
+        studentService.deleteStudentByRegNo(regNo);
+        return "Student successfully deleted!";
+    }
 }
